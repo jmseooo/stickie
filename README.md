@@ -64,7 +64,7 @@
 
 Xcode에서 `Stickie.xcodeproj`를 열고 실행합니다.
 
-> 앱 이름과 Xcode 프로젝트는 **Stickie**입니다. 저장소 이름(`peticker`)과 번들 ID · App Group에는 초기 이름인 Peticker가 남아 있는데, 식별자라 그대로 유지합니다.
+> 번들 ID(`com.jinminseo.Peticker`)와 App Group에는 초기 이름인 Peticker가 남아 있습니다. 이름이 아니라 식별자라, 바꾸면 기존 빌드 · 설치된 위젯과의 연결이 끊어지므로 그대로 유지합니다.
 
 앱 타깃과 위젯 타깃의 Signing & Capabilities에 **동일한 App Group**(`group.com.jinminseo.Peticker`)이 등록되어 있어야 위젯이 스티커를 읽을 수 있습니다.
 
