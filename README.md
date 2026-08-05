@@ -1,4 +1,4 @@
-# Peticker
+# Stickie
 
 반려동물 사진에서 **배경을 지워 스티커로 만들고**, 홈 화면 · 잠금 화면 위젯에 올리는 iOS 앱
 
@@ -64,7 +64,7 @@
 
 Xcode에서 `Stickie.xcodeproj`를 열고 실행합니다.
 
-> 저장소와 앱 이름은 **Peticker**, Xcode 프로젝트와 폴더명은 **Stickie**입니다. 초기 이름이 남아 있는 것으로 같은 앱입니다.
+> 앱 이름과 Xcode 프로젝트는 **Stickie**입니다. 저장소 이름(`peticker`)과 번들 ID · App Group에는 초기 이름인 Peticker가 남아 있는데, 식별자라 그대로 유지합니다.
 
 앱 타깃과 위젯 타깃의 Signing & Capabilities에 **동일한 App Group**(`group.com.jinminseo.Peticker`)이 등록되어 있어야 위젯이 스티커를 읽을 수 있습니다.
 
