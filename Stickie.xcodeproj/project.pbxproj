@@ -311,12 +311,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Stickie/Stickie.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"Stickie/Preview Content\"";
 				DEVELOPMENT_TEAM = Y4J3ZHQ9H4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "반려동물 사진으로 위젯 스티커를 만들기 위해 사진 라이브러리에 접근합니다.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Stickie needs access to your photo library so you can choose a pet photo and turn it into a widget sticker.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -456,7 +456,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = StickieWidget/StickieWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = Y4J3ZHQ9H4;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = StickieWidget/Info.plist;
@@ -481,7 +481,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = StickieWidget/StickieWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = Y4J3ZHQ9H4;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = StickieWidget/Info.plist;
@@ -508,12 +508,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Stickie/Stickie.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"Stickie/Preview Content\"";
 				DEVELOPMENT_TEAM = Y4J3ZHQ9H4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "반려동물 사진으로 위젯 스티커를 만들기 위해 사진 라이브러리에 접근합니다.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Stickie needs access to your photo library so you can choose a pet photo and turn it into a widget sticker.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

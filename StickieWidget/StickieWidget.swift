@@ -167,7 +167,7 @@ struct StickieWidget: Widget {
             StickieWidgetEntryView(entry: entry)
         }
         .configurationDisplayName("Stickie")
-        .description("반려동물 스티커를 홈 화면·잠금화면에 표시합니다.")
+        .description("Show your pet stickers on the Home Screen and Lock Screen.")
         .supportedFamilies([.systemSmall, .accessoryCircular])
         .contentMarginsDisabled()   // 투명 배경 위에 스티커가 꽉 차게
     }
