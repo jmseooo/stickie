@@ -132,7 +132,8 @@ struct MainView: View {
                 }
 
                 // 딤 레이어 — 잠금 슬롯 위, 청록 원 아래 (Figma 55:1376)
-                if showGuide || showBatteryGuide {
+                // 1단계(위젯 추가 안내)에서만 원 아래에 깔아 원을 하이라이트한다.
+                if showGuide {
                     Color.black.opacity(0.6)
                         .ignoresSafeArea()
                         .transition(.opacity)
@@ -167,6 +168,14 @@ struct MainView: View {
                 // 가이드 텍스트·화살표 — 청록 원 위
                 if showGuide {
                     MainGuideOverlay()
+                        .transition(.opacity)
+                }
+
+                // 2단계(배터리 안내) 딤 — 청록 원 위에 덮어 원 하이라이트를 끈다.
+                // (배터리 안내 텍스트·화살표는 이 딤 위 .overlay에서 그려져 그대로 보인다.)
+                if showBatteryGuide {
+                    Color.black.opacity(0.6)
+                        .ignoresSafeArea()
                         .transition(.opacity)
                 }
             }
