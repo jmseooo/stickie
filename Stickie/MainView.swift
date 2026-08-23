@@ -92,6 +92,7 @@ struct MainView: View {
     private var showBatteryPercent = false
     @State private var showAddWidgetGuide = false   // 첫 스티커 완성 직후 "위젯 추가" 안내 팝업
     @State private var showBatteryGuide = false      // 설치 후 처음 한 번, "배터리 표시 설정" 안내
+    @State private var revealedSlot: Int? = nil      // "Coming Soon"이 뜬 잠금 슬롯 (없으면 nil)
 
     // 저장된 스티커와 배경을 함께 읽어 미리보기를 위젯과 같은 모습으로 맞춘다
     private func reloadWidgetPreview() {
@@ -113,6 +114,17 @@ struct MainView: View {
                 let w = geo.size.width
                 let h = geo.size.height
 
+                // "Coming Soon"이 떠 있으면 슬롯 밖 아무 곳이나 탭해서 닫는다.
+                // 슬롯보다 아래에 깔아, 슬롯 자체 탭(다른 슬롯 전환 포함)은 그대로 동작.
+                if revealedSlot != nil {
+                    Color.clear
+                        .contentShape(Rectangle())
+                        .ignoresSafeArea()
+                        .onTapGesture {
+                            withAnimation(.easeOut(duration: 0.3)) { revealedSlot = nil }
+                        }
+                }
+
                 // 딤 아래 요소
                 Group {
                     // Stickie 로고 — 상단 중앙
@@ -123,11 +135,11 @@ struct MainView: View {
                         .position(x: w / 2, y: 30 + 25)
 
                     // 핑크 잠금 슬롯 — 좌상단
-                    LockedSlot(size: 149, color: .brandPink)
+                    LockedSlot(id: 0, size: 149, color: .brandPink, revealed: $revealedSlot)
                         .position(x: w * 0.242, y: h * 0.228 + 25)
 
                     // 라임 잠금 슬롯 — 좌하단
-                    LockedSlot(size: 105, color: Color(hex: "A5DC0F"))
+                    LockedSlot(id: 1, size: 105, color: Color(hex: "A5DC0F"), revealed: $revealedSlot)
                         .position(x: w * 0.340, y: h * 0.843 + 25)
                 }
 
@@ -288,10 +300,13 @@ struct MainView: View {
 
 
 struct LockedSlot: View {
+    let id: Int
     let size: CGFloat
     let color: Color
-    @State private var isRevealed = false
+    @Binding var revealed: Int?          // 부모가 관리 — 이 슬롯이 열렸는지, 다른 곳 탭 시 닫힘
     @State private var dismissTask: Task<Void, Never>?
+
+    private var isRevealed: Bool { revealed == id }
 
     var body: some View {
         ZStack {
@@ -320,11 +335,13 @@ struct LockedSlot: View {
         .contentShape(Circle())
         .onTapGesture {
             dismissTask?.cancel()
-            withAnimation(.easeOut(duration: 0.2)) { isRevealed = true }
+            withAnimation(.easeOut(duration: 0.2)) { revealed = id }
             dismissTask = Task {
                 try? await Task.sleep(nanoseconds: 3_000_000_000)
                 guard !Task.isCancelled else { return }
-                withAnimation(.easeOut(duration: 0.3)) { isRevealed = false }
+                withAnimation(.easeOut(duration: 0.3)) {
+                    if revealed == id { revealed = nil }   // 그새 다른 슬롯이 열렸으면 건드리지 않음
+                }
             }
         }
     }
@@ -337,8 +354,8 @@ struct LockedSlot: View {
 
 #Preview("Locked Slot") {
     HStack(spacing: 40) {
-        LockedSlot(size: 149, color: .brandPink)
-        LockedSlot(size: 105, color: Color(hex: "A5DC0F"))
+        LockedSlot(id: 0, size: 149, color: .brandPink, revealed: .constant(nil))
+        LockedSlot(id: 1, size: 105, color: Color(hex: "A5DC0F"), revealed: .constant(nil))
     }
     .padding()
     .background(Color.bgBase)
