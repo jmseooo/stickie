@@ -276,7 +276,12 @@ struct MainView: View {
         }
         .onAppear {
             reloadWidgetPreview()   // 이전에 만든 스티커가 있으면 저장된 배경색과 함께 표시
-            showGuide = true        // 최초 진입 딤 — 탭하면 배터리 안내로 이어진다(아래 오버레이)
+            // 위젯 추가 안내는 최초 진입 때 한 번만 (탭하면 배터리 안내로 이어진다·아래 오버레이)
+            let hasSeenKey = "hasSeenWidgetGuide"
+            if !UserDefaults.standard.bool(forKey: hasSeenKey) {
+                UserDefaults.standard.set(true, forKey: hasSeenKey)
+                showGuide = true
+            }
         }
     }
 }
